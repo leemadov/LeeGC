@@ -1,94 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>LeeGC - Pokémon Card Grading</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        #logo {
-            height: 60px;
-        }
-
-        #searchForm {
-            display: flex;
-            align-items: center;
-        }
-
-        #searchInput {
-            padding: 10px;
-            font-size: 16px;
-            border: 2px solid #ccc;
-            border-radius: 5px 0 0 5px;
-            outline: none;
-        }
-
-        #searchForm button {
-            padding: 10px 15px;
-            font-size: 16px;
-            background-color: #2a75bb;
-            color: white;
-            border: none;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-        }
-
-        #searchForm button:hover {
-            background-color: #1f5fa3;
-        }
-
-        main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 100px);
-        }
-
-        #exampleImage {
-            max-width: 90%;
-            max-height: 80vh;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeeGC Card Grading</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #1e3a8a;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    header img {
+      height: 50px;
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+    }
+    .search-container input[type="number"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      font-size: 16px;
+    }
+    .search-container button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #3b82f6;
+      color: white;
+      font-size: 16px;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+    .search-container button:hover {
+      background-color: #2563eb;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      padding: 20px;
+    }
+    main img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #e5e7eb;
+      margin-top: 60px;
+      font-size: 14px;
+    }
+    .about {
+      max-width: 800px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .about h2 {
+      color: #1e3a8a;
+    }
+    .about p {
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <img src="logo.jpg" alt="LeeGC Logo">
+    <div class="search-container">
+      <input type="number" id="cardNumber" placeholder="Enter card number">
+      <button onclick="searchCard()">Search</button>
+    </div>
+  </header>
 
-    <header>
-        <img id="logo" src="logo.jpg" alt="LeeGC Logo">
-        <form id="searchForm" onsubmit="goToCard(event)">
-            <input type="text" id="searchInput" placeholder="Enter card number" required>
-            <button type="submit">Search</button>
-        </form>
-    </header>
+  <main>
+    <div class="about">
+      <h2>Welcome to LeeGC</h2>
+      <p>The ultimate destination for professional Pokémon card grading. Upload your cards, assign a grade, and get a digital report and printable label instantly.</p>
+    </div>
+    <img src="examplecards.png" alt="Example Graded Cards">
+    <a href="https://forms.gle/uYWVLvKwo4TCbGSm6" target="_blank">
+      <button style="padding: 12px 24px; font-size: 18px; background-color: #10b981; color: white; border: none; border-radius: 5px; cursor: pointer;">Submit Your Card</button>
+    </a>
+  </main>
 
-    <main>
-        <img id="exampleImage" src="examplecards.png" alt="Example Graded Cards">
-    </main>
+  <footer>
+    &copy; 2025 LeeGC. All rights reserved.
+  </footer>
 
-    <script>
-        function goToCard(event) {
-            event.preventDefault();
-            const number = document.getElementById("searchInput").value.trim();
-            if (number !== "") {
-                window.location.href = `graded_cards/${number}/report.html`;
-            }
-        }
-    </script>
-
+  <script>
+    function searchCard() {
+      const number = document.getElementById('cardNumber').value;
+      if (number) {
+        window.location.href = `/LeeGC/graded_cards/${number}/report.html`;
+      }
+    }
+  </script>
 </body>
 </html>
