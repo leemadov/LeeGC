@@ -97,15 +97,16 @@
             color: #666;
         }
     </style>
-    <script>
-        function searchCard() {
-            const input = document.getElementById('searchInput');
-            const cardNumber = input.value.trim();
-            if (cardNumber) {
-                window.location.href = `card.html?number=${cardNumber}`;
-            }
+<script>
+    document.getElementById("searchForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // Prevent form from reloading the page
+        const cardNumber = document.getElementById("searchInput").value.trim();
+        if (cardNumber !== "") {
+            window.location.href = `${cardNumber}/report.html`;
         }
-    </script>
+    });
+</script>
+
 </head>
 <body>
     <header>
